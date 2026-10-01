@@ -19,19 +19,19 @@ export default function Card({
 }: CardProps) {
   return (
     <InteractiveCard>
-      <Link href={`/venue/${vid}`} className="block">
+      <Link href={`/venue/${vid}`} className="group block">
         <img
           src={imgSrc}
           alt={venueName}
           width={480}
           height={320}
-          className="h-52 w-full object-cover"
+          className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
         />
-        <h2 className="px-4 pt-4 text-lg font-bold text-blue-700 underline">
+        <h2 className="px-5 pt-5 text-xl font-bold text-slate-900 transition group-hover:text-blue-700">
           {venueName}
         </h2>
       </Link>
-      <div className="p-4">
+      <div className="px-5 pb-5 pt-3">
         <Rating
           id={`${venueName} Rating`}
           name={`${venueName} Rating`}

@@ -10,24 +10,30 @@ export default function Banner() {
   const router = useRouter();
 
   return (
-    <section className="relative h-[430px] overflow-hidden text-center text-white">
+    <section
+      className="relative isolate grid min-h-[calc(100vh-4rem)] cursor-pointer place-items-center overflow-hidden px-6 text-center text-white"
+      onClick={() => setIndex((index + 1) % covers.length)}
+    >
       <img
         src={covers[index]}
         alt="Venue banner"
-        className="h-full w-full cursor-pointer object-cover brightness-50"
-        onClick={() => setIndex((index + 1) % covers.length)}
+        className="absolute inset-0 -z-20 h-full w-full object-cover transition-opacity duration-500 brightness-[0.42]"
       />
-      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6">
-        <h1 className="text-4xl font-bold">where every event finds its venue</h1>
-        <p className="mt-3">Discover the perfect venue for every occasion.</p>
+      <div className="absolute inset-0 -z-10 bg-slate-950/55" />
+      <div className="relative flex max-w-3xl flex-col items-center">
+        <h1 className="text-5xl font-bold tracking-tight text-white drop-shadow-lg sm:text-6xl">where every event finds its venue</h1>
+        <p className="mt-5 max-w-xl text-base leading-7 text-slate-100 sm:text-lg">Discover the perfect venue for every occasion.</p>
+        <button
+          type="button"
+          className="mt-8 cursor-pointer rounded-md bg-amber-400 px-7 py-3 font-bold text-slate-950 shadow-lg shadow-slate-950/40 transition hover:bg-amber-300"
+          onClick={(event) => {
+            event.stopPropagation();
+            router.push("/venue");
+          }}
+        >
+          Select Venue
+        </button>
       </div>
-      <button
-        type="button"
-        className="absolute bottom-6 right-6 rounded bg-blue-700 px-5 py-3 font-semibold"
-        onClick={() => router.push("/venue")}
-      >
-        Select Venue
-      </button>
     </section>
   );
 }

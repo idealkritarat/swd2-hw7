@@ -7,10 +7,13 @@ export default async function VenuePage({ params }: { params: Promise<{ vid: str
   if (!venue) notFound();
 
   return (
-    <main className="min-h-screen bg-slate-50 p-8 text-slate-900">
-      <section className="mx-auto max-w-3xl overflow-hidden rounded-lg bg-white shadow">
-        <img src={venue.imgSrc} alt={venue.venueName} className="h-80 w-full object-cover" />
-        <h1 className="p-6 text-3xl font-bold">{venue.venueName}</h1>
+    <main className="grid min-h-[calc(100vh-4rem)] place-items-center bg-slate-100 px-5 py-12 text-slate-900 sm:px-8">
+      <section className="w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-300/60">
+        <img src={venue.imgSrc} alt={venue.venueName} className="h-72 w-full object-cover sm:h-[430px]" />
+        <div className="p-7 sm:p-10">
+          <p className="text-base text-slate-600">Venue {venue.vid}</p>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900">{venue.venueName}</h1>
+        </div>
       </section>
     </main>
   );

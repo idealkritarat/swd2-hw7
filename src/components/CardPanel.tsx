@@ -43,8 +43,12 @@ export default function CardPanel() {
   const [ratings, dispatch] = useReducer(ratingsReducer, venues, initRatings);
 
   return (
-    <section className="mx-auto max-w-5xl px-5 pt-8">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="min-h-[calc(100vh-4rem)] bg-gradient-to-b from-slate-100 to-slate-50 px-5 py-12 sm:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">Choose your venue</h1>
+        </div>
+        <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
         {venues.map((venue) => (
           <Card
             key={venue.vid}
@@ -57,10 +61,10 @@ export default function CardPanel() {
             }
           />
         ))}
-      </div>
+        </div>
 
-      <div className="mt-8 pb-10">
-        <h3 className="text-lg font-bold text-slate-900">
+        <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-slate-200 bg-white px-6 py-5 shadow-sm">
+        <h3 className="text-sm font-bold tracking-wide text-slate-700 uppercase">
           Venue List with Ratings : {ratings.size}
         </h3>
         <ul>
@@ -69,12 +73,13 @@ export default function CardPanel() {
               key={venueName}
               data-testid={venueName}
               onClick={() => dispatch({ type: "REMOVE_VENUE", venueName })}
-              className="cursor-pointer py-1 text-slate-700 hover:text-blue-700"
+              className="cursor-pointer border-t border-slate-100 py-2 text-slate-600 transition hover:text-blue-700"
             >
               {venueName} Rating : {rating}
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </section>
   );

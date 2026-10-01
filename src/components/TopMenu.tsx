@@ -1,38 +1,18 @@
 import TopMenuItem from "./TopMenuItem";
+import Link from "next/link";
 
 export default function TopMenu() {
-    return (
-        <header
-            className="flex h-16 w-full items-center border-b border-slate-200 bg-white px-6"
-            style={{
-                display: "flex",
-                width: "100%",
-                height: "64px",
-                paddingLeft: "24px",
-                paddingRight: "24px",
-                boxSizing: "border-box",
-            }}
-        >
-            <div
-                className="ml-auto flex items-center gap-4"
-                style={{
-                    marginLeft: "auto",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "16px",
-                }}
-            >
-                <nav>
-                    <TopMenuItem title="Booking" pageRef="/booking" />
-                </nav>
-                <img
-                    src="/img/logo.png"
-                    alt="Venue Explorer logo"
-                    width={120}
-                    height={40}
-                    className="h-10 w-auto"
-                />
-            </div>
-        </header>
-    );
+  return (
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-center border-b border-slate-800 bg-slate-950 px-5 text-white">
+      <div className="w-full flex justify-around items-center gap-8">
+        <Link href="/" className="text-base font-bold tracking-wide">
+          Venue Explorer
+        </Link>
+        <nav className="flex items-center gap-1">
+          <TopMenuItem title="Venues" pageRef="/venue" />
+          <TopMenuItem title="Booking" pageRef="/booking" />
+        </nav>
+      </div>
+    </header>
+  );
 }
