@@ -1,24 +1,33 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+const covers = ["/img/cover.jpg", "/img/cover2.jpg", "/img/cover3.jpg", "/img/cover4.jpg"];
+
 export default function Banner() {
-    return (
-        <section
-            className="px-6 py-24 text-center text-white"
-            style={{
-                backgroundImage:
-                    "linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('/img/hero.jpg')",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                minHeight: "430px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-            }}
-        >
-            <h1 className="text-4xl font-bold">
-                where every event finds its venue
-            </h1>
-            <p className="mt-3 text-base">
-                Discover the perfect venue for every occasion.
-            </p>
-        </section>
-    );
+  const [index, setIndex] = useState(0);
+  const router = useRouter();
+
+  return (
+    <section className="relative h-[430px] overflow-hidden text-center text-white">
+      <img
+        src={covers[index]}
+        alt="Venue banner"
+        className="h-full w-full cursor-pointer object-cover brightness-50"
+        onClick={() => setIndex((index + 1) % covers.length)}
+      />
+      <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6">
+        <h1 className="text-4xl font-bold">where every event finds its venue</h1>
+        <p className="mt-3">Discover the perfect venue for every occasion.</p>
+      </div>
+      <button
+        type="button"
+        className="absolute bottom-6 right-6 rounded bg-blue-700 px-5 py-3 font-semibold"
+        onClick={() => router.push("/venue")}
+      >
+        Select Venue
+      </button>
+    </section>
+  );
 }

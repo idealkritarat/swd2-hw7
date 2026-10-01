@@ -4,14 +4,15 @@ import { useReducer } from "react";
 import Card from "@/components/Card";
 
 type Venue = {
+  vid: string;
   venueName: string;
   imgSrc: string;
 };
 
 const venues: Venue[] = [
-  { venueName: "The Bloom Pavilion", imgSrc: "/img/bloom.jpg" },
-  { venueName: "Spark Space", imgSrc: "/img/sparkspace.jpg" },
-  { venueName: "The Grand Table", imgSrc: "/img/grandtable.jpg" },
+  { vid: "001", venueName: "The Bloom Pavilion", imgSrc: "/img/bloom.jpg" },
+  { vid: "002", venueName: "Spark Space", imgSrc: "/img/sparkspace.jpg" },
+  { vid: "003", venueName: "The Grand Table", imgSrc: "/img/grandtable.jpg" },
 ];
 
 type RatingsMap = Map<string, number>;
@@ -43,10 +44,11 @@ export default function CardPanel() {
 
   return (
     <section className="mx-auto max-w-5xl px-5 pt-8">
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {venues.map((venue) => (
           <Card
-            key={venue.venueName}
+            key={venue.vid}
+            vid={venue.vid}
             venueName={venue.venueName}
             imgSrc={venue.imgSrc}
             rating={ratings.get(venue.venueName) ?? 0}
