@@ -1,3 +1,7 @@
+## Live Demo
+
+Deployed on Vercel: [https://swd2-hw7.vercel.app/](https://swd2-hw7.vercel.app/)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
